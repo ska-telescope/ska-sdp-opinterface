@@ -1,0 +1,61 @@
+variables:
+  GIT_STRATEGY: clone
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH
+    - if: $CI_COMMIT_TAG
+
+stages:
+  - build
+  - publish
+
+# ============================================================================
+# Build Docker development image
+# ============================================================================
+
+build:
+  stage: build
+  variables:
+    GIT_VERSION: ${CI_COMMIT_SHORT_SHA}
+    PREFIX_BUILD: ${CI_REGISTRY_IMAGE}
+  image: docker:stable
+  services:
+    - docker:dind
+  before_script:
+    - apk add make git
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - make build
+    - make push
+
+# ============================================================================
+# Publish Docker image (tag only)
+# ============================================================================
+
+publish:
+  stage: publish
+  dependencies:
+    - build
+  variables:
+    GIT_VERSION: ${CI_COMMIT_SHORT_SHA}
+    PREFIX_BUILD: ${CI_REGISTRY_IMAGE}
+    PREFIX_RELEASE: ${DOCKER_REGISTRY_HOST}/sdp-prototype
+  image: docker:stable
+  services:
+    - docker:dind
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /^.+$/ # Confirm tag message exists
+      - $CI_COMMIT_TAG =~ /^((([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)$/ #Confirm semantic versioning of tag
+  except:
+    - branches
+  before_script:
+    - apk add make git
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker login -u $DOCKER_REGISTRY_USERNAME -p $DOCKER_REGISTRY_PASSWORD $DOCKER_REGISTRY_HOST
+  script:
+    - make pull
+    - make push_release
+  retry: 2
+
