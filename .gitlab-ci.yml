@@ -1,0 +1,55 @@
+variables:
+  GIT_STRATEGY: clone
+
+workflow:
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+    - if: $CI_COMMIT_BRANCH
+
+stages:
+  - build
+  - publish
+
+# Build Docker development image
+# ============================================================================
+
+build:
+  stage: build
+  variables:
+    GIT_VERSION: ${CI_COMMIT_SHORT_SHA}
+    PREFIX_BUILD: ${CI_REGISTRY_IMAGE}
+  image: docker:stable
+  services:
+    - docker:dind
+  before_script:
+    - apk add make git
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - make build
+    - make push
+
+# ============================================================================
+# Tag and publish Docker image (master only)
+# ============================================================================
+
+publish:
+  stage: publish
+  dependencies:
+    - build
+  only: [master]
+  variables:
+    GIT_VERSION: ${CI_COMMIT_SHORT_SHA}
+    PREFIX_BUILD: ${CI_REGISTRY_IMAGE}
+    PREFIX_RELEASE: ${DOCKER_REGISTRY_HOST}/sdp-prototype
+  image: docker:stable
+  services:
+    - docker:dind
+  before_script:
+    - apk add make git
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker login -u $DOCKER_REGISTRY_USERNAME -p $DOCKER_REGISTRY_PASSWORD $DOCKER_REGISTRY_HOST
+  script:
+    - make pull
+    - make push_release
+  retry: 2
+

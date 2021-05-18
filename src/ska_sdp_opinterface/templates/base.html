@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="30">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <title>{% block title %}Database Viewer{% endblock %}</title>
+</head>
+<body>
+<img src="{{ url_for('static', filename='SIMlogo.png')}}" width="128" height="128" alt="Team SIM logo">
+{% block content %}{% endblock %}
+</body>
+</html>
+
