@@ -24,8 +24,10 @@ setuptools.setup(
     ],
     setup_requires=["pytest-runner"],
     tests_require=[
-        "pytest",
-        "pytest-cov",
+        'pylint2junit',
+        'pytest',
+        'pytest-cov',
+        'pytest-pylint',
     ],
     dependency_links=[
         "https://nexus.engageska-portugal.pt/repository/pypi/simple/",
