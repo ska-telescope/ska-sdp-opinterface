@@ -29,3 +29,10 @@ def test_db_tree(client, config):
 
 def test_workflows(client, config):
     run_and_check(client, "/workflows")
+
+
+def test_create(client, config):
+    rv = client.post(
+        "/db_create", data={"key": c.MASTER_KEY + "/temp", "value": "test"}
+    )
+    assert rv.status_code == HTTPStatus.FOUND

@@ -11,7 +11,6 @@ def test_raw_dict(config):
 
 def test_tree_data(config):
     d = model.get_tree_data()
-    print(d)
     assert isinstance(d, list)
     assert len(d) == 2
     # The recursive algorithm inverts the order.
