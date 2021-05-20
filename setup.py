@@ -10,7 +10,7 @@ with open("README.md", "r") as file:
 setuptools.setup(
     name="ska-sdp-opinterface",
     description="SKA SDP Operator Interface",
-    author="SKA ORCA and Sim Teams",
+    author="SKA Sim Team",
     license="License :: OSI Approved :: BSD License",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
@@ -24,10 +24,10 @@ setuptools.setup(
     ],
     setup_requires=["pytest-runner"],
     tests_require=[
-        'pylint2junit',
-        'pytest',
-        'pytest-cov',
-        'pytest-pylint',
+        "pylint2junit",
+        "pytest",
+        "pytest-cov",
+        "pytest-pylint",
     ],
     dependency_links=[
         "https://nexus.engageska-portugal.pt/repository/pypi/simple/",
