@@ -18,6 +18,7 @@ stages:
 
 test:
   stage: test
+  image: nexus.engageska-portugal.pt/ska-docker/ska-python-buildenv:latest
   before_script:
     - pip3 install -r requirements.txt -r requirements-test.txt
   script:
@@ -33,6 +34,7 @@ test:
 
 lint:
   stage: test
+  image: nexus.engageska-portugal.pt/ska-docker/ska-python-buildenv:latest
   before_script:
     - pip3 install -r requirements.txt -r requirements-test.txt
   script:
