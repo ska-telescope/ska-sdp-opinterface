@@ -1,0 +1,2 @@
+MASTER_KEY = "/master"
+MASTER_STATE = "OFF"
