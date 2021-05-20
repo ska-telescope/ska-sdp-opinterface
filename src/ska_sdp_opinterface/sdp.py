@@ -13,20 +13,23 @@ def hello_world():
 @app.route("/")
 @app.route("/db_list")
 def db_list():
-    return render_template("db_list.html", title="Database Contents List",
-                           entries=model.get_raw_dict())
+    return render_template(
+        "db_list.html", title="Database Contents List", entries=model.get_raw_dict()
+    )
 
 
 @app.route("/db_tree")
 def db_tree():
-    return render_template("db_tree.html", title="Database Contents Tree",
-                           data=model.get_tree_data())
+    return render_template(
+        "db_tree.html", title="Database Contents Tree", data=model.get_tree_data()
+    )
 
 
 @app.route("/workflows")
 def workflows():
-    return render_template("workflows.html", title="Workflows",
-                           data=model.get_workflows())
+    return render_template(
+        "workflows.html", title="Workflows", data=model.get_workflows()
+    )
 
 
 @app.route("/db_create", methods=["POST", "GET"])

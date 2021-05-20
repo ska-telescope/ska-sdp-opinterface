@@ -11,14 +11,17 @@ def test_raw_dict(config):
 
 def test_tree_data(config):
     d = model.get_tree_data()
+    print(d)
     assert isinstance(d, list)
     assert len(d) == 2
     # The recursive algorithm inverts the order.
-    assert d[1]["id"] == c.MASTER_KEY
-    assert d[0]["id"] == "state"
+    key = c.MASTER_KEY[1:]
+    assert d[1]["id"] == key
+    assert d[0]["id"] == model._combine_key(key, "state")
 
 
 def test_workflows(config):
-    # TODO: insert workflow into the data.
     d = model.get_workflows()
-    assert len(d) == 0
+    assert len(d) == 5
+    assert d[0]["id"] == "batch"
+    assert d[1]["id"] == "realtime"
