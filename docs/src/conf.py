@@ -19,10 +19,7 @@
 #
 
 autodoc_mock_imports = [
-    'jsonschema',
-    'ska',
     'ska_sdp_config',
-    'tango',
 ]
 
 import os
@@ -42,8 +39,8 @@ def setup(app):
 
 
 # -- Project information -----------------------------------------------------
-project = 'SDP Local Monitoring and Control'
-copyright = '2019-2020, SKA SDP Developers'
+project = 'SDP Operator Interface'
+copyright = '2019-2021, SKA SDP Developers'
 author = 'SKA SDP Developers'
 
 
@@ -52,9 +49,9 @@ author = 'SKA SDP Developers'
 # built documents.
 #
 # The short X.Y.Z version.
-version = '0.16.1'
+version = '0.1.0'
 # The full version, including alpha/beta/rc pre-release tags.
-release = '0.16.1'
+release = '0.1.0'
 
 # -- General configuration ------------------------------------------------
 
