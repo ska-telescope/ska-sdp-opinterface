@@ -1,7 +1,9 @@
 FROM python:3.9-slim
-COPY requirements.txt /
-RUN pip3 install -r /requirements.txt
-COPY src/ska_sdp_opinterface /app
-COPY gunicorn_starter.sh /app
+
 WORKDIR /app
-ENTRYPOINT ["./gunicorn_starter.sh"]
+
+COPY . .
+RUN pip install -r requirements.txt
+RUN pip install .
+
+ENTRYPOINT ["bash", "gunicorn_starter.sh"]
