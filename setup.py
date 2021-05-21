@@ -17,7 +17,7 @@ setuptools.setup(
     url="https://gitlab.com/ska-telescope/sdp/ska-sdp-opinterface",
     package_dir={"": "src"},
     packages=setuptools.find_packages("src"),
-    package_data={"ska_sdp_opinterface": ["static", "templates"]},
+    package_data={"ska_sdp_opinterface": ["static/*", "templates/*"]},
     install_requires=[
         "flask",
         "ska-sdp-config>=0.2.1",
