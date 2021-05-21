@@ -7,8 +7,14 @@ import setuptools
 with open("README.md", "r") as file:
     LONG_DESCRIPTION = file.read()
 
+version = {}
+with open("src/ska_sdp_opinterface/version.py", "r") as file:
+    exec(file.read(), version)  # pylint: disable=exec-used
+
+
 setuptools.setup(
     name="ska-sdp-opinterface",
+    version=version["__version__"],
     description="SKA SDP Operator Interface",
     author="SKA Sim Team",
     license="License :: OSI Approved :: BSD License",
