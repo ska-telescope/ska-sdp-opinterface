@@ -28,11 +28,11 @@ def run_and_check(
 
 
 def test_db_list(client, config):
-    run_and_check(client, "/db_list")
+    run_and_check(client, "/db-list")
 
 
 def test_db_tree(client, config):
-    run_and_check(client, "/db_tree")
+    run_and_check(client, "/db-tree")
 
 
 def test_workflows(client, config):
@@ -40,10 +40,10 @@ def test_workflows(client, config):
 
 
 def test_create(client, config):
-    run_and_check(client, "/db_create", lambda data: "Submit!" in data)
+    run_and_check(client, "/db-create", lambda data: "Submit!" in data)
 
     result = client.post(
-        "/db_create", data={"key": c.MASTER_KEY + "/temp", "value": "test"}
+        "/db-create", data={"key": c.MASTER_KEY + "/temp", "value": "test"}
     )
     assert result.status_code == HTTPStatus.FOUND
 

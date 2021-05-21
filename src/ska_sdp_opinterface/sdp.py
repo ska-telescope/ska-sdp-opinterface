@@ -11,14 +11,14 @@ def hello_world():
 
 
 @app.route("/")
-@app.route("/db_list")
+@app.route("/db-list")
 def db_list():
     return render_template(
         "db_list.html", title="Database Contents List", entries=model.get_raw_dict()
     )
 
 
-@app.route("/db_tree")
+@app.route("/db-tree")
 def db_tree():
     return render_template(
         "db_tree.html", title="Database Contents Tree", data=model.get_tree_data()
@@ -32,7 +32,7 @@ def workflows():
     )
 
 
-@app.route("/db_create", methods=["POST", "GET"])
+@app.route("/db-create", methods=["POST", "GET"])
 def db_create():
     if request.method == "POST":
         key = request.form["key"]
