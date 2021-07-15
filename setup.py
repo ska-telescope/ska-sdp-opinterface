@@ -26,17 +26,12 @@ setuptools.setup(
     package_data={"ska_sdp_opinterface": ["static/*", "templates/*"]},
     install_requires=[
         "flask",
-        "ska-sdp-config>=0.2.1",
+        "ska-sdp-config",
     ],
     setup_requires=["pytest-runner"],
     tests_require=[
-        "pylint2junit",
         "pytest",
         "pytest-cov",
-        "pytest-pylint",
-    ],
-    dependency_links=[
-        "https://nexus.engageska-portugal.pt/repository/pypi/simple/",
     ],
     zip_safe=False,
     python_requires=">=3.7",
