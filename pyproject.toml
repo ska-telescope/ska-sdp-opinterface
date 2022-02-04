@@ -4,7 +4,7 @@ version = "0.2.1"
 description = "SDP Operator Interface"
 authors = ["SKA SDP Developers"]
 license = "BSD-3-Clause"
-repository = https://gitlab.com/ska-telescope/sdp/ska-sdp-opinterface
+repository = "https://gitlab.com/ska-telescope/sdp/ska-sdp-opinterface"
 
 [[tool.poetry.source]]
 name = "ska"
