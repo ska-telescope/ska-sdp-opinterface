@@ -1,11 +1,15 @@
+""" Pytest setup file for the SDP Operator interface"""
+
 import pytest
 
 from ska_sdp_opinterface import model
+
 from . import constants as c
 
 
 @pytest.fixture
 def config():
+    """Create test entry and delete again on teardown"""
     backend = model.cfg.backend
     for txn in model.cfg.txn():
         txn.create_master({"state": c.MASTER_STATE})

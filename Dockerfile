@@ -2,8 +2,10 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
+RUN pip3 install poetry
+RUN poetry config virtualenvs.create false \
+     && poetry install --no-dev
+
 COPY . .
-RUN pip install -r requirements.txt
-RUN pip install .
 
 ENTRYPOINT ["bash", "gunicorn_starter.sh"]

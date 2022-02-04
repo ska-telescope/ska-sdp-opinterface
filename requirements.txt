@@ -1,4 +1,0 @@
---index-url https://artefact.skao.int/repository/pypi-all/simple
-Flask
-gunicorn
-ska-sdp-config

@@ -1,6 +1,0 @@
-black
-pylint
-pylint2junit
-pytest
-pytest-cov
-pytest-runner
