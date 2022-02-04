@@ -495,7 +495,7 @@ reference = "ska"
 
 [[package]]
 name = "junit-xml-2"
-version = "2-1.9b1"
+version = "1.9"
 description = "Fork of https://github.com/kyrus/python-junit-xml that has tarball published to pypi"
 category = "dev"
 optional = false
@@ -1032,7 +1032,7 @@ reference = "ska"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "c844d72ccb8468474207346c8f2a8e8a589d0e8dffe13ba86d7c532e1bd110c4"
+content-hash = "48ae637da57ebd3a424e4cea9e2141ad60f993cf094c145dcde6daa374b533ba"
 
 [metadata.files]
 aiohttp = [
@@ -1400,7 +1400,7 @@ jinja2 = [
     {file = "Jinja2-3.0.3.tar.gz", hash = "sha256:611bb273cd68f3b993fabdc4064fc858c5b47a973cb5aa7999ec1ba405c87cd7"},
 ]
 junit-xml-2 = [
-    {file = "junit-xml-2-1.9b1.tar.gz", hash = "sha256:a61ee73226db8637ad341550c97812da42e17341713b442a3c3adc1255f0ca59"},
+    {file = "junit_xml_2-1.9-py2.py3-none-any.whl", hash = "sha256:05093d75fe11120ccd51293884b5ee334ff3bc4b5106647c2bcc928486600588"},
 ]
 lazy-object-proxy = [
     {file = "lazy-object-proxy-1.7.1.tar.gz", hash = "sha256:d609c75b986def706743cdebe5e47553f4a5a1da9c5ff66d76013ef396b5a8a4"},
