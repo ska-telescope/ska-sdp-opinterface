@@ -1,14 +1,14 @@
 [tool.poetry]
 name = "ska-sdp-opinterface"
 version = "0.2.1"
-description = "SDP Operator Interface"
+description = "SKA SDP Operator Interface"
 authors = ["SKA SDP Developers"]
 license = "BSD-3-Clause"
 repository = "https://gitlab.com/ska-telescope/sdp/ska-sdp-opinterface"
 
 [[tool.poetry.source]]
 name = "ska"
-url = "https://artefact.skao.int/repository/pypi-all/simple"
+url = "https://artefact.skao.int/repository/pypi-internal/simple"
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -24,7 +24,7 @@ flake8 = "^4.0.1"
 pylint = "^2.12.2"
 pytest-cov = "^3.0.0"
 pylint-junit = "^0.3.2"
-junit-xml-2 = "1.9"
+build = "^0.7.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
