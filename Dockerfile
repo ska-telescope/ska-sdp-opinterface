@@ -1,11 +1,24 @@
+FROM python:3.9-slim as build
+
+ENV POETRY_HOME=/opt/poetry
+
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sSL https://install.python-poetry.org | python -
+
+COPY . ./
+RUN /opt/poetry/bin/poetry export --without-hashes -o requirements.txt
+RUN /opt/poetry/bin/poetry build
+
 FROM python:3.9-slim
+
+WORKDIR /install
+
+COPY --from=build requirements.txt dist/*.whl ./
+RUN pip install --no-cache-dir --no-compile -r requirements.txt *.whl
 
 WORKDIR /app
 
-COPY . .
-
-RUN pip3 install poetry
-RUN poetry config virtualenvs.create false \
-     && poetry install --no-dev
+COPY gunicorn_starter.sh ./
 
 ENTRYPOINT ["bash", "gunicorn_starter.sh"]
