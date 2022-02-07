@@ -1,43 +1,35 @@
-# See: https://docs.gitlab.com/ee/ci/yaml/includes.html
 image: $SKA_K8S_TOOLS_DOCKER_BUILDER_IMAGE
 
 variables:
-  # make sure the .make submodule is pulled from the ska-cicd-makefile GitLab repository
   GIT_SUBMODULE_STRATEGY: recursive
 
 stages:
   - lint
-  - build
   - test
+  - build
   - publish
-  - pages
   - scan
-include:
+  - pages
 
-# This repsoitory should NOT create a Python package - so omit the python-build and
-# python-publish stages
-#
-# Python lint jobs
+include:
+  # Python lint and test jobs
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/python-lint.gitlab-ci.yml'
-
-# Python test jobs
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/python-test.gitlab-ci.yml'
 
-# Documentation job
+  # OCI image jobs
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/oci-image.gitlab-ci.yml'
+
+  # Documentation jobs
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/docs.gitlab-ci.yml'
- 
-# OCI jobs
-  - project: "ska-telescope/templates-repository"
-    file: "gitlab-ci/includes/oci-image.gitlab-ci.yml"
 
-# Tag based gitLab release management
+  # Tag-based release management jobs
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/release.gitlab-ci.yml'
 
-# SKA finaliser
+  # Finaliser job
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/finaliser.gitlab-ci.yml'
-
