@@ -11,7 +11,9 @@ from typing import Dict, List
 import ska_sdp_config
 
 DELIMITER = ":"
-cfg = ska_sdp_config.Config(backend="memory" if "pytest" in sys.modules else "etcd3")
+cfg = ska_sdp_config.Config(
+    backend="memory" if "pytest" in sys.modules else "etcd3"
+)
 
 
 def _combine_key(parent: str, key: str) -> str:
@@ -27,8 +29,8 @@ def _to_node(key: str, parent: str, text: str) -> Dict:
     return {"id": _clean_key(key), "parent": _clean_key(parent), "text": text}
 
 
-def _add_dict(data: List, d: Dict, parent: str = "#") -> None:
-    for key, value in d.items():
+def _add_dict(data: List, dct: Dict, parent: str = "#") -> None:
+    for key, value in dct.items():
 
         # Combine the parent and key to avoid name clashes.
         text = key

@@ -1,32 +1,45 @@
-from flask import Flask, render_template, url_for, request, redirect
-from ska_sdp_opinterface import model
+"""
+A prototype web-interafce to the SDP Configuration database built
+using FLASK
+"""
 
+from flask import Flask, redirect, render_template, request, url_for
+
+from ska_sdp_opinterface import model
 
 app = Flask(__name__)
 
 
 @app.route("/test")
 def hello_world():
+    """A test 'Hello World' target"""
     return "Hello, World!"
 
 
 @app.route("/")
 @app.route("/db-list")
 def db_list():
+    """List entries target"""
     return render_template(
-        "db_list.html", title="Database Contents List", entries=model.get_raw_dict()
+        "db_list.html",
+        title="Database Contents List",
+        entries=model.get_raw_dict(),
     )
 
 
 @app.route("/db-tree")
 def db_tree():
+    """Entries tree-view target"""
     return render_template(
-        "db_tree.html", title="Database Contents Tree", data=model.get_tree_data()
+        "db_tree.html",
+        title="Database Contents Tree",
+        data=model.get_tree_data(),
     )
 
 
 @app.route("/workflows")
 def workflows():
+    """List workflows from database"""
     return render_template(
         "workflows.html", title="Workflows", data=model.get_workflows()
     )
@@ -34,6 +47,7 @@ def workflows():
 
 @app.route("/db-create", methods=["POST", "GET"])
 def db_create():
+    """Create database entry prototype"""
     if request.method == "POST":
         key = request.form["key"]
         value = request.form["value"]
