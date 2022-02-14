@@ -3,7 +3,7 @@ A prototype web-interafce to the SDP Configuration database built
 using FLASK
 """
 
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, render_template
 
 from ska_sdp_opinterface import model
 
@@ -45,16 +45,16 @@ def workflows():
     )
 
 
-@app.route("/db-create", methods=["POST", "GET"])
-def db_create():
-    """Create database entry prototype"""
-    if request.method == "POST":
-        key = request.form["key"]
-        value = request.form["value"]
-        model.create_entry(key, value)
-        return redirect(url_for("db_list"))
-
-    return render_template("db_create.html")
+# @app.route("/db-create", methods=["POST", "GET"])
+# def db_create():
+#     """Create database entry prototype"""
+#     if request.method == "POST":
+#         key = request.form["key"]
+#         value = request.form["value"]
+#         model.create_entry(key, value)
+#         return redirect(url_for("db_list"))
+#
+#     return render_template("db_create.html")
 
 
 if __name__ == "__main__":

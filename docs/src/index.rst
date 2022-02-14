@@ -1,44 +1,28 @@
-.. skeleton documentation master file, created by
-   sphinx-quickstart on Thu May 17 15:17:35 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+SDP Operator interface
+======================
 
+The ``ska-sdp-opinterface`` repository contains a prototype which shows
+some examples of a web-based interface which can view (and could, in the future, control)
+the current live state of the SDP subsystem by means of the `SDP Configuration Database
+<https://developer.skao.int/projects/ska-sdp-config/en/latest/>`_.
+This illustrates some of the functionality which could
+be expanded further in both monitoring and control of the
+the SDP sub-system in a user-friendly and/or graphical manner.
 
-.. HOME SECTION ==================================================
+This implementation is based on the Python `Flask <https://flask.palletsprojects.com/en/2.0.x/>`_
+module and shows the following views
 
-.. Hidden toctree to manage the sidebar navigation.
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Home
-  :hidden:
-
-
-.. README =============================================================
-
-.. This project most likely has it's own README. We include it here.
+* Display of the current contents of the SDP Configuration library in a textual format
+* Similar to the above but shown as a a `tree view` - where nodes in the tree can be expanded and this could be connected to additional functionality.
+* A different `tree view` of the `SDP Workflows` contained in the database. Again the nodes can be expanded to show more detail.
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Readme
+  :maxdepth: 1
+  :caption: Using the Operator interface
 
-   ../../README
+  connecting
+  list-view
+  tree-view 
+  wf-view
 
-.. COMMUNITY SECTION ==================================================
-
-..
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Package name
-  :hidden:
-
-  package/guide
-
-
-SDP Operator Interface documentation
-====================================
-
-These are all the packages, functions and scripts that form part of the project.
-
-- :doc:`package/guide`
+ 
