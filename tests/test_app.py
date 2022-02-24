@@ -51,14 +51,14 @@ def test_workflows(client, config):
     run_and_check(client, "/workflows", lambda data: "realtime" in data)
 
 
-def test_create(client, config):
-    """Test /db-create target"""
-    run_and_check(client, "/db-create", lambda data: "Submit!" in data)
-
-    result = client.post(
-        "/db-create", data={"key": c.MASTER_KEY + "/temp", "value": "test"}
-    )
-    assert result.status_code == HTTPStatus.FOUND
+# def test_create(client, config):
+#     """Test /db-create target"""
+#     run_and_check(client, "/db-create", lambda data: "Submit!" in data)
+#
+#     result = client.post(
+#         "/db-create", data={"key": c.MASTER_KEY + "/temp", "value": "test"}
+#     )
+#     assert result.status_code == HTTPStatus.FOUND
 
 
 def test_test(client, config):

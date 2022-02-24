@@ -1,6 +1,14 @@
 # SDP Operator Interface
 
-This package contains the operator interface to monitor the SKA SDP.
+This package contains the prototype operator interface to monitor and control the SKA SDP.
+
+The current implementation is based on the Python Flask module and shows the basic capabilities of
+
+- Displaying the current contents of the SDP Configuration library in a textual format
+
+- Similar to the above but with a tree view - where nodes in the tree can be expanded and connected to additional display features.
+
+- A simple example of creating new entries in the Configuration database
 
 ## Standard CI machinery
 
