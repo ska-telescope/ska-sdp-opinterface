@@ -14,7 +14,7 @@ url = "https://artefact.skao.int/repository/pypi-internal/simple"
 python = "^3.7"
 flask = "^2.0.2"
 gunicorn = "^20.1.0"
-ska-sdp-config = "^0.3.5"
+ska-sdp-config = { url = "https://gitlab.com/ska-telescope/sdp/ska-sdp-config/-/jobs/2166955642/artifacts/raw/dist/ska_sdp_config-0.3.5+dev.c0efe6cef-py3-none-any.whl" }
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
