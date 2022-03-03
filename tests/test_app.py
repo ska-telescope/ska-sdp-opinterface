@@ -21,13 +21,13 @@ def client():
         yield client
 
 
-def master_check(data: str) -> bool:
+def controller_check(data: str) -> bool:
     """Check test entries present"""
-    return c.MASTER_KEY in data and c.MASTER_STATE in data
+    return c.CONTROLLER_KEY in data and c.CONTROLLER_STATE in data
 
 
 def run_and_check(
-    client, path: str, check: [Callable[[str], bool]] = master_check
+    client, path: str, check: [Callable[[str], bool]] = controller_check
 ) -> None:
     """Return test data from Flask"""
     result = client.get(path)
@@ -56,7 +56,10 @@ def test_workflows(client, config):
 #     run_and_check(client, "/db-create", lambda data: "Submit!" in data)
 #
 #     result = client.post(
-#         "/db-create", data={"key": c.MASTER_KEY + "/temp", "value": "test"}
+#         "/db-create", data={
+#             "key": c.CONTROLLER_KEY + "/temp",
+#             "value": "test"
+#         }
 #     )
 #     assert result.status_code == HTTPStatus.FOUND
 
