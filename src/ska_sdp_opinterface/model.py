@@ -72,9 +72,9 @@ def get_tree_data() -> List:
     return data
 
 
-def get_workflows() -> List:
+def get_scripts() -> List:
     """
-    Get the workflows as a tree suitable for jstree.
+    Get the processing scripts as a tree suitable for jstree.
 
     :return: a list of tree nodes
     """
@@ -82,13 +82,13 @@ def get_workflows() -> List:
 
     types = {"batch": [], "realtime": []}
     for txn in cfg.txn():
-        for key in txn.raw.list_keys("/workflow", recurse=3):
+        for key in txn.raw.list_keys("/script", recurse=3):
             value = txn.raw.get(key)
             _, _, k = key.split("/")
-            wf_type, name, version = k.split(":")
-            if name not in types[wf_type]:
-                data.append(_to_node(name, wf_type, name))
-                types[wf_type].append(name)
+            kind, name, version = k.split(":")
+            if name not in types[kind]:
+                data.append(_to_node(name, kind, name))
+                types[kind].append(name)
             k = _combine_key(name, version)
             data.append(_to_node(k, name, version))
             _add_dict(data, json.loads(value), k)

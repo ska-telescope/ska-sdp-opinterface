@@ -14,7 +14,7 @@ module and shows the following views
 
 * Display of the current contents of the SDP Configuration library in a textual format
 * Similar to the above but shown as a a `tree view` - where nodes in the tree can be expanded and this could be connected to additional functionality.
-* A different `tree view` of the `SDP Workflows` contained in the database. Again the nodes can be expanded to show more detail.
+* A different `tree view` of the `SDP Scripts` contained in the database. Again the nodes can be expanded to show more detail.
 
 .. toctree::
   :maxdepth: 1
@@ -22,7 +22,7 @@ module and shows the following views
 
   connecting
   list-view
-  tree-view 
-  wf-view
+  tree-view
+  scripts-view
 
- 
+

@@ -1,7 +1,7 @@
-Workflows View
+Scripts View
 ==============
 
-Clicking on `Workflows` in the left-hand menu will initially show a display of the types of `workflows`
+Clicking on `Scripts` in the left-hand menu will initially show a display of the types of `scripts`
 (currently just two) defined
 in the `Configuration Database` in a `tree` type view.
 
