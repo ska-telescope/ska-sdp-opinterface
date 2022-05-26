@@ -19,6 +19,4 @@ RUN pip install --no-cache-dir --no-compile -r requirements.txt *.whl
 
 WORKDIR /app
 
-COPY gunicorn_starter.sh ./
-
-ENTRYPOINT ["bash", "gunicorn_starter.sh"]
+ENTRYPOINT ["gunicorn", "-w", "2", "--threads", "3", "-b", "0.0.0.0:8000", "ska_sdp_opinterface.sdp:app"]
