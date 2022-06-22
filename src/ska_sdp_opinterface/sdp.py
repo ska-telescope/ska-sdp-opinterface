@@ -37,11 +37,11 @@ def db_tree():
     )
 
 
-@app.route("/workflows")
-def workflows():
-    """List workflows from database"""
+@app.route("/scripts")
+def scripts():
+    """List scripts from database"""
     return render_template(
-        "workflows.html", title="Workflows", data=model.get_workflows()
+        "scripts.html", title="Scripts", data=model.get_scripts()
     )
 
 
