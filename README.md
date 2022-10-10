@@ -52,5 +52,7 @@ When you are ready to make a new release:
     - `bump-minor-release`, or
     - `bump-major-release`
   - Set the Python package version number with `make python-set-release`
+  - Manually update the version numbers in
+    - `docs/src/conf.py`
   - Create the git tag with `make git-create-tag`
   - Push the changes with `make git-push-tag`
