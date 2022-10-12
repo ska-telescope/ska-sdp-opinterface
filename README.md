@@ -48,9 +48,9 @@ When you are ready to make a new release:
   - Check out the master branch
   - Create an issue in the [Release Management](https://jira.skatelescope.org/projects/REL/summary) project
   - Update the version number in `.release` with
-    - `bump-patch-release`,
-    - `bump-minor-release`, or
-    - `bump-major-release`
+    - `make bump-patch-release`,
+    - `make bump-minor-release`, or
+    - `make bump-major-release`
   - Set the Python package version number with `make python-set-release`
   - Manually update the version numbers in
     - `docs/src/conf.py`
