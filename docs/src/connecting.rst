@@ -1,13 +1,13 @@
 Connecting to the Operator interface
 ====================================
 
-The Operator interface is deployed as a service with the name ``sdp-opinterface`` in a
+The Operator interface is deployed as a service with the name ``ska-sdp-opinterface`` in a
 `Kubernetes deployment <https://developer.skao.int/projects/ska-sdp-integration/en/latest/running/standalone.html>`_ of the SDP system.
 
 For example::
 
   $ helm install test ska/ska-sdp
-  $ kubectl get service sdp-opinterface
+  $ kubectl get service ska-sdp-opinterface
 
   NAME              TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
   sdp-opinterface   NodePort   10.107.71.94   <none>        8000:30422/TCP   5m16s
@@ -27,7 +27,7 @@ Using minikube::
 
   On a minikube deployment simply type
 
-  $ minikube service sdp-opinterface
+  $ minikube service ska-sdp-opinterface
 
   to connect to the service in the default web browser.
 
@@ -43,8 +43,8 @@ Using minikube::
 
 On a cluster started by other means - `kubeadm` for instance::
 
-   $ kubectl get pods --selector="component=sdp-opinterface"
-   sdp-opinterface-0   1/1     Running   0          76m   172.17.18.169   alaska-kube-md-0-c2d2f95f-wpj8j
+   $ kubectl get pods --selector="component=ska-sdp-opinterface" -o wide
+   ska-sdp-opinterface-0   1/1     Running   0          76m   172.17.18.169   alaska-kube-md-0-c2d2f95f-wpj8j
    and then
    $ kubectl get node alaska-kube-md-0-c2d2f95f-wpj8j -o wide
    alaska-kube-md-0-c2d2f95f-wpj8j   Ready    <none>   137d   v1.22.1   192.168.3.63   ...
