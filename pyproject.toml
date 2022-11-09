@@ -11,7 +11,8 @@ name = "ska"
 url = "https://artefact.skao.int/repository/pypi-internal/simple"
 
 [tool.poetry.dependencies]
-python = ">=3.7.2,<4.0"
+python = "^3.10"
+etcd3-py = { git = "https://gitlab.com/majashdown/etcd3-py.git", branch = "master" }
 flask = "^2.2.2"
 gunicorn = "^20.1.0"
 ska-sdp-config = "^0.4.1"
