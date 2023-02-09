@@ -46,7 +46,6 @@ the code does not pass all of them.
 When you are ready to make a new release:
 
   - Check out the master branch
-  - Create an issue in the [Release Management](https://jira.skatelescope.org/projects/REL/summary) project
   - Update the version number in `.release` with
     - `make bump-patch-release`,
     - `make bump-minor-release`, or
@@ -54,5 +53,7 @@ When you are ready to make a new release:
   - Set the Python package version number with `make python-set-release`
   - Manually update the version numbers in
     - `docs/src/conf.py`
+  - Update the `CHANGELOG.md` and add the right version number
+  - Use your working JIRA ticket when the ticket number is asked for
   - Create the git tag with `make git-create-tag`
   - Push the changes with `make git-push-tag`
