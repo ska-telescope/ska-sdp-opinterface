@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ska-sdp-opinterface"
-version = "0.3.1"
+version = "0.3.2"
 description = "SKA SDP Operator Interface"
 authors = ["SKA SDP Developers"]
 license = "BSD-3-Clause"
