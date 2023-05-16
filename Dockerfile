@@ -1,10 +1,12 @@
 FROM python:3.10-slim as build
 
+RUN mkdir -p /opt/poetry
 ENV POETRY_HOME=/opt/poetry
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sSL https://install.python-poetry.org | python -
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py --output $POETRY_HOME/install-poetry.py
+RUN cd $POETRY_HOME && python3 install-poetry.py
 
 COPY . ./
 RUN ${POETRY_HOME}/bin/poetry export --without-hashes -o requirements.txt
