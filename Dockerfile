@@ -5,9 +5,8 @@ ENV POETRY_HOME=/opt/poetry
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py --output $POETRY_HOME/install-poetry.py
-RUN cd $POETRY_HOME && python3 install-poetry.py
-
+RUN curl --retry 5 -sSL https://install.python-poetry.org -o ${POETRY_HOME}/install-poetry.py
+RUN python3 ${POETRY_HOME}/install-poetry.py
 COPY . ./
 RUN ${POETRY_HOME}/bin/poetry export --without-hashes -o requirements.txt
 RUN ${POETRY_HOME}/bin/poetry build
