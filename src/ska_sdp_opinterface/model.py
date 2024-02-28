@@ -4,6 +4,7 @@ This module contains the "model" layer.
 This includes configuration database interactions and building data structures
 for display.
 """
+
 import json
 import sys
 from typing import Dict, List
